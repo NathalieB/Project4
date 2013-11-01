@@ -288,7 +288,7 @@ input: nSteps (# of interior points), time
 
 \begin_layout Plain Layout
 
-deltaX = 1 / (nSteps + 1)
+deltaX = 1.0 / (nSteps + 1)
 \end_layout
 
 \begin_layout Plain Layout
@@ -298,12 +298,12 @@ alpha = 0.5
 
 \begin_layout Plain Layout
 
-deltaT = alpha * deltaX ^^ 2
+deltaT = alpha * deltaX ^ 2
 \end_layout
 
 \begin_layout Plain Layout
 
-tSteps = 1 / deltaT
+tSteps = 1.0 / deltaT
 \end_layout
 
 \begin_layout Plain Layout
@@ -321,7 +321,7 @@ define v, vNext
 
 \begin_layout Plain Layout
 
-for( i = 1 --> nSteps )
+for( i = 1; i <= nSteps)
 \end_layout
 
 \begin_layout Plain Layout
@@ -336,16 +336,11 @@ for( i = 1 --> nSteps )
 
 \begin_layout Plain Layout
 
-	vNext[i] = 0
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
-
-for( t = 1 --> tSteps )
+for( t = 1; t <= tSteps)
 \end_layout
 
 \begin_layout Plain Layout
@@ -379,7 +374,7 @@ for( t = 1 --> tSteps )
 
 \begin_layout Plain Layout
 
-for( i = 1 --> nSteps )
+for( i = 1; i <= nSteps)
 \end_layout
 
 \begin_layout Plain Layout
@@ -453,7 +448,7 @@ Implicit scheme
 \end_layout
 
 \begin_layout Standard
-x
+Show that A^(-1) is tridiagonal.
 \end_layout
 
 \begin_layout Subsubsection
@@ -461,7 +456,7 @@ Crank-Nicholson scheme
 \end_layout
 
 \begin_layout Standard
-x
+Show that (2I - alphaB)^(-1)(2I - alphaB) is tridiagonal.
 \end_layout
 
 \begin_layout Subsection
@@ -469,7 +464,17 @@ Truncation errors and stability
 \end_layout
 
 \begin_layout Standard
-x
+Simply use the table from p.
+ 350 in the slides.
+ Refer to lecture notes for stability (p.
+ 307-309, 312).
+\end_layout
+
+\begin_layout Standard
+If time: Do the Taylor expand for explicit scheme and find the actual error,
+ not the order: p.
+ 346-347 in the slides.
+ (Can also use just the result in the C-N case.)
 \end_layout
 
 \begin_layout Section
