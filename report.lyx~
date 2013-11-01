@@ -190,7 +190,7 @@ v(x,t)=\sum_{n=1}^{\infty}A_{n}\sin(n\pi x)e^{-n^{2}\pi^{2}t}.
 \end_layout
 
 \begin_layout Standard
-We now find the Fourier series coefficients by partwise integration
+We now find the Fourier series coefficients
 \end_layout
 
 \begin_layout Standard
