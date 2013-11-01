@@ -1,0 +1,1017 @@
+#LyX file created by tex2lyx 2.0.6
+\lyxformat 413
+\begin_document
+\begin_header
+\textclass article
+\begin_preamble
+
+
+\usepackage{listings}\usepackage{a4wide}\usepackage{color}\usepackage{cite}% [2,3,4] --> [2--4]
+\usepackage{shadow}
+
+
+\end_preamble
+\options a4wide
+\use_default_options false
+\language english
+\language_package none
+\inputencoding auto
+\fontencoding T1
+\font_roman default
+\font_sans default
+\font_typewriter default
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100
+\font_tt_scale 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\paperfontsize 12
+\spacing single
+\use_hyperref 1
+\pdf_bookmarks 1
+\pdf_bookmarksnumbered 0
+\pdf_bookmarksopen 0
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks 0
+\pdf_pdfborder 0
+\pdf_colorlinks 0
+\pdf_backref section
+\pdf_pdfusetitle 1
+\papersize default
+\use_geometry false
+\use_amsmath 2
+\use_esint 1
+\use_mhchem 0
+\use_mathdots 0
+\cite_engine basic
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\use_refstyle 0
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section*
+
+Introduction to numerical projects
+\end_layout
+
+\begin_layout Standard
+
+Here follows a brief recipe and recommendation on how to write a report for each project. 
+\end_layout
+
+\begin_layout Itemize
+
+Give a short description of the nature of the problem and the eventual numerical methods you have used. 
+\end_layout
+
+\begin_layout Itemize
+
+Describe the algorithm you have used and/or developed. Here you may find it convenient to use pseudocoding. In many cases you can describe the algorithm in the program itself.
+\end_layout
+
+\begin_layout Itemize
+
+Include the source code of your program. Comment your program properly. 
+\end_layout
+
+\begin_layout Itemize
+
+If possible, try to find closed form solutions, or known limits in order to test your program when developing the code. 
+\end_layout
+
+\begin_layout Itemize
+
+Include your results either in figure form or in a table. Remember to label your results. All tables and figures should have relevant captions and labels on the axes. 
+\end_layout
+
+\begin_layout Itemize
+
+Try to evaluate the reliabilty and numerical stability/precision of your results. If possible, include a qualitative and/or quantitative discussion of the numerical stability, eventual loss of precision etc.
+\end_layout
+
+\begin_layout Itemize
+
+Try to give an interpretation of you results in your answers to the problems. 
+\end_layout
+
+\begin_layout Itemize
+
+Critique: if possible include your comments and reflections about the exercise, whether you felt you learnt something, ideas for improvements and other thoughts you've made when solving the exercise. We wish to keep this course at the interactive level and your comments can help us improve it. 
+\end_layout
+
+\begin_layout Itemize
+
+Try to establish a practice where you log your work at the computerlab. You may find such a logbook very handy at later stages in your work, especially when you don't properly remember what a previous test version of your program did. Here you could also record the time spent on solving the exercise, various algorithms you may have tested or other topics which you feel worthy of mentioning. 
+\end_layout
+
+\begin_layout Section*
+
+Format for electronic delivery of report and programs
+\end_layout
+
+\begin_layout Standard
+
+The preferred format for the report is a PDF file. You can also use DOC or postscript formats. As programming language we prefer that you choose between C/C++, Fortran2008 or Python. The following prescription should be followed when preparing the report: 
+\end_layout
+
+\begin_layout Itemize
+
+Use Devilry to hand in your projects, log in at 
+\begin_inset Flex Flex:URL
+status collapsed
+
+\begin_layout Plain Layout
+
+ http://devilry.ifi.uio.no
+\end_layout
+
+\end_inset
+
+ with your normal UiO username and password and choose either 'fys3150' or 'fys4150'. There you can load up the files within the deadline. 
+\end_layout
+
+\begin_layout Itemize
+
+Upload 
+\series bold
+only
+\family default
+\series default
+\shape default
+ the report file! For the source code file(s) you have developed please provide us with your link to your github domain. The report file should include all of your discussions and a list of the codes you have developed. Do not include library files which are available at the course homepage, unless you have made specific changes to them. 
+\end_layout
+
+\begin_layout Itemize
+
+Comments from us on your projects, approval or not, corrections to be made etc can be found under your Devilry domain and are only visible to you and the teachers of the course.
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+{
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+em
+\end_layout
+
+\end_inset
+
+ Finally, we encourage you to work two and two together. Optimal working groups consist of 2-3 students. You can then hand in a common report. 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section*
+
+Project 4, Diffusion of neurotransmitters in the synaptic cleft, deadline November 11, 12pm
+\end_layout
+
+\begin_layout Standard
+
+The dominant way of transporting signals between neurons (nerve cells) in the brain is by means of diffusion of particular signal molecules called 
+\emph on
+neurotransmitters
+\emph default
+ across the synaptic cleft separating the cell membranes of the two cells. A drawing of a synapse is given in Fig.
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:figure1"
+
+\end_inset
+
+. 
+\begin_inset Float figure
+placement thb
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics 
+	filename thompsonB2000-p38.eps
+	width 9cm
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+
+\size small
+Drawing of a synapse. The axon terminal is the knoblike structure and the spine of the receiving neuron is the bottom one. The synaptic cleft is the small space between the presynaptic (axon) and postsynaptic (dendritic spine) membrane. (From Thompson: 
+\begin_inset Quotes eld
+\end_inset
+
+The Brain
+\begin_inset Quotes erd
+\end_inset
+
+, Worth Publ., 2000)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:figure1"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Following the arrival of an action potential in the axon terminal a process is initiated in which (i) vesicles inside the axon terminal (filled with neurotransmitter molecules) merge with the presynaptic (axon) membrane and (ii) release neurotransmitters into the synaptic cleft. These neurotransmitters diffuse across the synaptic cleft to receptors on the postsynaptic side which 
+\begin_inset Quotes eld
+\end_inset
+
+receives
+\begin_inset Quotes erd
+\end_inset
+
+ the signal. A schematic illustration of this process is shown in Fig.
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:figure2"
+
+\end_inset
+
+(left). 
+\begin_inset Float figure
+placement t
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics 
+	filename thompsonB2000-p39.eps
+	width 10cm
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename kandel-B1991-p217-glutamate.eps
+	width 3cm
+
+\end_inset
+
+ 
+\begin_inset Graphics 
+	filename kandel-B1991-p217-GABA.eps
+	width 3cm
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+
+\size small
+Left: Schematic drawing of the process of vesicle release from the axon terminal and release of transmitter molecules into the synaptic cleft. (From Thompson: 
+\begin_inset Quotes eld
+\end_inset
+
+The Brain
+\begin_inset Quotes erd
+\end_inset
+
+, Worth Publ., 2000). Right: Molecular structure of the two important neurotransmitters 
+\emph on
+glutamate
+\emph default
+ and 
+\emph on
+GABA
+\emph default
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:figure2"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+Since the transport process in the synaptic cleft is governed by diffusion, we can describe it mathematically by 
+\begin_inset Formula \begin{equation}
+\frac{\partial u}{\partial t} = D \nabla^2 u,
+\label{eq:diffusion_eq_3D}
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $u\,$
+\end_inset
+
+ is the concentration of the particular neurotransmitter, and 
+\begin_inset Formula $D$
+\end_inset
+
+ is the diffusion coefficient of the neurotransmitter in this particular environment (solvent in synaptic cleft).
+\end_layout
+
+\begin_layout Standard
+
+If we assume (i) that the neurotransmitter is released roughly equally on the 
+\begin_inset Quotes eld
+\end_inset
+
+presynaptic
+\begin_inset Quotes erd
+\end_inset
+
+ side of the synaptic cleft, and (ii) that the synaptic cleft is roughly equally wide across the whole synaptic terminal, we can, given the large area of the synaptic cleft compared to its width, assume that the neurotransmitter concentration only varies in the direction across the synaptic cleft (from presynaptic to postsynaptic side). We choose this direction to be the 
+\begin_inset Formula $x$
+\end_inset
+
+-direction (see Fig.
+\begin_inset space ~
+
+\end_inset
+
+
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:figure3"
+
+\end_inset
+
+). 
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+% FIGURE : synaptic cleft
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+placement b
+wide false
+sideways false
+status open
+
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+
+\backslash
+centerline{
+\end_layout
+
+\end_inset
+
+
+\begin_inset Graphics 
+	filename synaptic_cleft.eps
+	width 10cm
+
+\end_inset
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+}
+\end_layout
+
+\end_inset
+
+ 
+\begin_inset Caption
+
+\begin_layout Standard
+
+
+\size small
+Schematic drawing of the synaptic cleft in our model. The black dots represent neurotransmitter molecules, and the situation shown corresponds to the situation immediately after neurotransmitter release into the synaptic cleft.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\size small
+
+
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:figure3"
+
+\end_inset
+
+ 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+
+\begin_inset ERT
+status collapsed
+
+\begin_layout Standard
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end_layout
+
+\begin_layout Standard
+
+
+\end_layout
+
+\end_inset
+
+In this case 
+\begin_inset Formula $u({\bf r})=u(x)$
+\end_inset
+
+, the diffusion equation reduces to 
+\begin_inset Formula \begin{equation}
+\frac{\partial u}{\partial t} = D \frac{\partial^2 u}{\partial x^2}.
+\label{eq:diffusion_eq_1D}
+\end{equation}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Immediately after the release of a neurotransmitter into the synaptic cleft (
+\begin_inset Formula $t=0$
+\end_inset
+
+) the concentration profile in the 
+\begin_inset Formula $x$
+\end_inset
+
+-direction is given by 
+\begin_inset Formula \begin{equation}
+u(x,t=0) = N \, \delta(x),
+\label{eq:initial_condition}
+\end{equation}
+\end_inset
+
+where 
+\begin_inset Formula $N$
+\end_inset
+
+ is the number of particle released into the synaptic cleft per area of membrane.
+\end_layout
+
+\begin_layout Standard
+
+To get an idea over the time-dependence of the neurotransmitter concentration at the postsynaptic side (
+\begin_inset Formula $x=d$
+\end_inset
+
+), we can look at the solution of a 
+\begin_inset Quotes eld
+\end_inset
+
+free
+\begin_inset Quotes erd
+\end_inset
+
+ random walk (i.e., no obstacles or particle absorbers in either direction). The solution of Eq.
+\begin_inset space ~
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:diffusion_eq_1D"
+
+\end_inset
+
+) with the initial condition in Eq.
+\begin_inset space ~
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:initial_condition"
+
+\end_inset
+
+) is given by (see Nelson: 
+\emph on
+Biological Physics
+\emph default
+, p. 143 or Lectures notes chapter 12.3) 
+\begin_inset Formula \begin{equation}
+u(x,t) = \frac{N}{\sqrt{4 \pi D t}} e^{-x^2/4Dt}\;\;.
+\label{eq:solution_delta_1D}
+\end{equation}
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+The concentration at the postsynaptic side 
+\begin_inset Formula $u(d,t)$
+\end_inset
+
+ approaches 0 in the limit 
+\begin_inset Formula $t \rightarrow 0\;$
+\end_inset
+
+ and 
+\begin_inset Formula $t \rightarrow \infty$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+
+The above assumption regarding the neurotransmitter molecules undergoing a 
+\begin_inset Quotes eld
+\end_inset
+
+free
+\begin_inset Quotes erd
+\end_inset
+
+ random walk, is obviously a simplification. In the true diffusion process in the synaptic cleft the neurotransmitter molecules will, for example, occasionally bump into the presynaptic membrane they came from. Also at the postsynaptic side the neurotransmitters are absorbed by receptors located on the postsynaptic cell membrane and are thus (temporally) removed from the solution.
+\end_layout
+
+\begin_layout Standard
+
+To approach this situation in our mathematical model we can impose the following boundary and initial conditions with 
+\begin_inset Formula $x\in[0,d]$
+\end_inset
+
+ 
+\begin_inset Formula \begin{equation}
+u(x=0,t>0) = u_0, \;\;u(x=d,\mbox{all $t$})=0,
+\;\;u(0 < x < d,t < 0) = 0 \;\;.
+\label{eq:initial_conditions_2}
+\end{equation}
+\end_inset
+
+Hereafter we set 
+\begin_inset Formula $d=1$
+\end_inset
+
+. This corresponds to that (i) for 
+\begin_inset Formula $t<0$
+\end_inset
+
+ there are no neurotransmitters in the synaptic cleft, (ii) for 
+\begin_inset Formula $t>0$
+\end_inset
+
+ the concentration of neurotransmitters at the presynaptic boundary of the synaptic cleft (
+\begin_inset Formula $x=0$
+\end_inset
+
+) is kept 
+\emph on
+fixed
+\emph default
+  at 
+\begin_inset Formula $u=u_0=1$
+\end_inset
+
+ in our case, and (iii) that the postsynaptic receptors immediately absorb nearby neurotransmitters so that 
+\begin_inset Formula $u=0$
+\end_inset
+
+ on the postsynaptic side of the cleft (
+\begin_inset Formula $x=d=1$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+
+The full solution of the diffusion equation with boundary/initial conditions in Eq.
+\begin_inset space ~
+
+\end_inset
+
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:initial_conditions_2"
+
+\end_inset
+
+) can be found in a closed form. We will use this solution to test our numerical calculations.
+\end_layout
+
+\begin_layout Standard
+
+We are thus looking at a one-dimensional problem 
+\begin_inset Formula \[
+ \frac{\partial^2 u(x,t)}{\partial x^2} =\frac{\partial u(x,t)}{\partial t}, t> 0, x\in [0,d]
+\]
+\end_inset
+
+or 
+\begin_inset Formula \[
+u_{xx} = u_t,
+\]
+\end_inset
+
+with initial conditions, i.e., the conditions at 
+\begin_inset Formula $t=0$
+\end_inset
+
+, 
+\begin_inset Formula \[
+u(x,0)= 0 \hspace{0.5cm} 0 < x < d
+\]
+\end_inset
+
+with 
+\begin_inset Formula $d=1$
+\end_inset
+
+ the length of the 
+\begin_inset Formula $x$
+\end_inset
+
+-region of interest. The boundary conditions are 
+\begin_inset Formula \[
+u(0,t)= 1 \hspace{0.5cm} t > 0,
+\]
+\end_inset
+
+and 
+\begin_inset Formula \[
+u(d,t)= 0 \hspace{0.5cm} t > 0.
+\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+In this project we want to study the numerical stability of three methods for partial differential equations (PDEs). These methods are 
+\end_layout
+
+\begin_layout Enumerate
+
+The explicit forward Euler algorithm with discretized versions of time given by a forward formula and a centered difference in space resulting in 
+\begin_inset Formula \[
+u_t\approx \frac{u(x,t+\Delta t)-u(x,t)}{\Delta t}=\frac{u(x_i,t_j+\Delta t)-u(x_i,t_j)}{\Delta t}
+\]
+\end_inset
+
+and 
+\begin_inset Formula \[
+u_{xx}\approx \frac{u(x+\Delta x,t)-2u(x,t)+u(x-\Delta x,t)}{\Delta x^2},
+\]
+\end_inset
+
+or 
+\begin_inset Formula \[
+u_{xx}\approx \frac{u(x_i+\Delta x,t_j)-2u(x_i,t_j)+u(x_i-\Delta x,t_j)}{\Delta x^2}.
+\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+The implicit Backward Euler with 
+\begin_inset Formula \[
+u_t\approx \frac{u(x,t)-u(x,t-\Delta t)}{\Delta t}=\frac{u(x_i,t_j)-u(x_i,t_j-\Delta t)}{\Delta t}
+\]
+\end_inset
+
+and 
+\begin_inset Formula \[
+u_{xx}\approx \frac{u(x+\Delta x,t)-2u(x,t)+u(x-\Delta x,t)}{\Delta x^2},
+\]
+\end_inset
+
+or 
+\begin_inset Formula \[
+u_{xx}\approx \frac{u(x_i+\Delta x,t_j)-2u(x_i,t_j)+u(x_i-\Delta x,t_j)}{\Delta x^2},
+\]
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+Finally we use the implicit Crank-Nicolson scheme with a time-centered scheme at 
+\begin_inset Formula $(x,t+\Delta t/2)$
+\end_inset
+
+ 
+\begin_inset Formula \[
+u_t\approx \frac{u(x,t+\Delta t)-u(x,t)}{\Delta t}=\frac{u(x_i,t_j+\Delta t)-u(x_i,t_j)}{\Delta t}.
+\]
+\end_inset
+
+The corresponding spatial second-order derivative reads 
+\begin_inset Formula \[
+u_{xx}\approx \frac{1}{2}\left(\frac{u(x_i+\Delta x,t_j)-2u(x_i,t_j)+u(x_i-\Delta x,t_j)}{\Delta x^2}+\right.
+\]
+\end_inset
+
+
+\begin_inset Formula \[
+\left. \frac{u(x_i+\Delta x,t_j+\Delta t)-2u(x_i,t_j+\Delta t)+u(x_i-\Delta x,t_j+\Delta t)}{\Delta x^2}
+\right).
+\]
+\end_inset
+
+Note well that we are using a time-centered scheme wih 
+\begin_inset Formula $t+\Delta t/2$
+\end_inset
+
+ as center. 
+\end_layout
+
+\begin_layout --Separator--
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+a) Find the closed form solution to this problem. You will need this in order to study the numerical accuracy of your results. To find the closed-form solution, we will need the stationary solution (steady-state solution). The solution to the steady-state problem is on the form 
+\begin_inset Formula $u(x)=Ax+b$
+\end_inset
+
+. The solution for the steady-state case 
+\begin_inset Formula $u_s$
+\end_inset
+
+ that obeys the above boundary conditions is 
+\begin_inset Formula \[
+u_s(x) = 1-x. 
+\]
+\end_inset
+
+You can use this solution to define a new function 
+\begin_inset Formula $v(x)=u(x)-u_s(x)$
+\end_inset
+
+ with boundary conditions 
+\begin_inset Formula $v(0)=v(d)=0$
+\end_inset
+
+. The latter is easier to solve both numerically and on a closed form. 
+\end_layout
+
+\begin_layout Enumerate
+
+b) Write down the algorithms for these three methods and the equations you need to implement. For the implicit schemes show that the equations lead to a tridiagonal matrix system for the new values. 
+\end_layout
+
+\begin_layout Enumerate
+
+c) Find the truncation errors of these three schemes and investigate their stability properties. 
+\end_layout
+
+\begin_layout Enumerate
+
+d) Implement the three algorithms in the same code and perform tests of the solution for these three approaches for 
+\begin_inset Formula $\Delta x=1/10$
+\end_inset
+
+, 
+\begin_inset Formula $h=1/100$
+\end_inset
+
+ using 
+\begin_inset Formula $\Delta t$
+\end_inset
+
+ as dictated by the stability limit of the explicit scheme. Study the solutions at two time points 
+\begin_inset Formula $t_1$
+\end_inset
+
+ and 
+\begin_inset Formula $t_2$
+\end_inset
+
+ where 
+\begin_inset Formula $u(x,t_1)$
+\end_inset
+
+ is smooth but still significantly curved and 
+\begin_inset Formula $u(x,t_2)$
+\end_inset
+
+ is almost linear, close to the stationary state. Remember that for solving the tridiagonal equations you can use your code from project 1. 
+\end_layout
+
+\begin_layout Enumerate
+
+e) Compare the solutions at 
+\begin_inset Formula $t_1$
+\end_inset
+
+ and 
+\begin_inset Formula $t_2$
+\end_inset
+
+ with the closed form result for the continuous problem. Which of the schemes would you classify as the best? 
+\end_layout
+
+\end_body
+\end_document
