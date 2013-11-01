@@ -97,7 +97,7 @@ Closed form solution
 \end_layout
 
 \begin_layout Standard
-We subtitue
+We subtitute
 \end_layout
 
 \begin_layout Standard
@@ -273,7 +273,179 @@ Explicit scheme
 \end_layout
 
 \begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+input: nSteps (# of interior points), time
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+deltaX = 1 / (nSteps + 1)
+\end_layout
+
+\begin_layout Plain Layout
+
+alpha = 0.5
+\end_layout
+
+\begin_layout Plain Layout
+
+deltaT = alpha * deltaX ^ 2
+\end_layout
+
+\begin_layout Plain Layout
+
+tSteps = 1 / deltaT
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+define v, vNext
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for( i = 1 --> nSteps )
+\end_layout
+
+\begin_layout Plain Layout
+
+	x = i * deltaX
+\end_layout
+
+\begin_layout Plain Layout
+
+	v[i] = v(x, 0)
+\end_layout
+
+\begin_layout Plain Layout
+
+	vNext[i] = 0
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for( t = 1 --> tSteps )
+\end_layout
+
+\begin_layout Plain Layout
+
+	for( i = 1 --> nSteps )
+\end_layout
+
+\begin_layout Plain Layout
+
+		vNext[i] = (1 - 2 * alpha) * v[i]
+\end_layout
+
+\begin_layout Plain Layout
+
+		if( i > 0 ) : vNext[i] += alpha * v[i-1]
+\end_layout
+
+\begin_layout Plain Layout
+
+		if( i < nSteps ) : vNext[i] += alpha * v[i+1]
+\end_layout
+
+\begin_layout Plain Layout
+
+	v = vNext
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+for( i = 1 --> nSteps )
+\end_layout
+
+\begin_layout Plain Layout
+
+	x = i * deltaX
+\end_layout
+
+\begin_layout Plain Layout
+
+	u[i] = 1 - x + v[i]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+output: u
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Implicit scheme
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
 x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Crank-Nicholson scheme
+\end_layout
+
+\begin_layout Standard
+\begin_inset listings
+inline false
+status open
+
+\begin_layout Plain Layout
+
+x
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Tridiagonal form of the implicit schemes
 \end_layout
 
 \begin_layout Subsubsection
@@ -286,14 +458,6 @@ x
 
 \begin_layout Subsubsection
 Crank-Nicholson scheme
-\end_layout
-
-\begin_layout Standard
-x
-\end_layout
-
-\begin_layout Subsection
-Tridiagonal form of the implicit schemes
 \end_layout
 
 \begin_layout Standard
