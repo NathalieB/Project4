@@ -384,7 +384,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	u[i] = u(v[i])
+	u[i] = v[i] + u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -412,7 +412,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time, tSteps, v0 (function)
+input: nSteps (# of interior points), time, tSteps, u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -459,7 +459,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	v[i] = v0(x)
+	v[i] = -u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -511,7 +511,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	u[i] = u(v[i])
+	u[i] = v[i] + u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -539,7 +539,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time, tSteps, v0 (function)
+input: nSteps (# of interior points), time, tSteps, u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -586,7 +586,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	v[i] = v0(x)
+	v[i] = -u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -653,7 +653,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	u[i] = u(v[i])
+	u[i] = v[i] + u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -725,8 +725,222 @@ Truncation errors and stability
 \end_layout
 
 \begin_layout Standard
-Simply use the table from p.
- 350 in the slides.
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<column alignment="center" valignment="top" width="0">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Scheme
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Truncation error
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Actual error in this project
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Stability
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Explicit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{O}(\Delta x^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{O}(\Delta t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+stable for 
+\begin_inset Formula $\alpha\leq0.5$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Implicit
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{O}(\Delta x^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{O}(\Delta t)$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+always stable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Crank-Nicholson
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\mathcal{O}(\Delta x^{2})$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{O}(\Delta t^{2})$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+always stable
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Analysis of our schemes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+s
 \end_layout
 
 \begin_layout Standard
