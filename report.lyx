@@ -265,7 +265,7 @@ u(x,t)=v(x,t)+u_{s}(x)=1-x+\sum_{n=1}^{\infty}\frac{2}{n\pi}\sin(n\pi x)e^{-n^{2
 \end_layout
 
 \begin_layout Standard
-The derivatives are:
+The derivatives are then
 \end_layout
 
 \begin_layout Standard
