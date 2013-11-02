@@ -279,7 +279,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time
+input: nSteps (# of interior points), time, v0 (function)
 \end_layout
 
 \begin_layout Plain Layout
@@ -331,7 +331,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	v[i] = v(x, 0)
+	v[i] = v0(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -412,7 +412,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time, tSteps
+input: nSteps (# of interior points), time, tSteps, v0 (function)
 \end_layout
 
 \begin_layout Plain Layout
@@ -459,7 +459,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	v[i] = v(x, 0)
+	v[i] = v0(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -539,7 +539,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time, tSteps
+input: nSteps (# of interior points), time, tSteps, v0 (function)
 \end_layout
 
 \begin_layout Plain Layout
@@ -586,7 +586,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	v[i] = v(x, 0)
+	v[i] = v0(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -681,9 +681,9 @@ The methods to reformulate the problem into a tridiagonal matrix equation
 \end_layout
 
 \begin_layout Standard
-In the case of the Crank-Nicholson sceme, it is easily seen by the definition
- of matrix addition that the sum of a diagonal matrix and a tridiagonal
- matrix 
+In the case of the Crank-Nicholson sceme, it is easily seen (by the definition
+ of matrix addition and multiplication of a matrix with a scalar) that the
+ sum of a diagonal matrix and a tridiagonal matrix 
 \begin_inset Formula $(2\mathbf{I}+\alpha\mathbf{B})$
 \end_inset
 
