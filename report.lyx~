@@ -279,7 +279,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time
+input: nSteps (# of interior points), time, u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -331,7 +331,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	v[i] = v(x, 0)
+	v[i] = -u_s(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -384,7 +384,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	u[i] = 1 - x + v[i]
+	u[i] = u(v[i])
 \end_layout
 
 \begin_layout Plain Layout
@@ -412,7 +412,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time, tSteps
+input: nSteps (# of interior points), time, tSteps, v0 (function)
 \end_layout
 
 \begin_layout Plain Layout
@@ -459,7 +459,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	v[i] = v(x, 0)
+	v[i] = v0(x)
 \end_layout
 
 \begin_layout Plain Layout
@@ -511,7 +511,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	u[i] = 1 - x + v[i]
+	u[i] = u(v[i])
 \end_layout
 
 \begin_layout Plain Layout
@@ -539,7 +539,7 @@ status open
 
 \begin_layout Plain Layout
 
-input: nSteps (# of interior points), time, tSteps
+input: nSteps (# of interior points), time, tSteps, v0 (function)
 \end_layout
 
 \begin_layout Plain Layout
@@ -653,7 +653,7 @@ for( i = 0; i < nSteps)
 
 \begin_layout Plain Layout
 
-	u[i] = 1 - x + v[i]
+	u[i] = u(v[i])
 \end_layout
 
 \begin_layout Plain Layout
