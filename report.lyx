@@ -264,6 +264,21 @@ u(x,t)=v(x,t)+u_{s}(x)=1-x+\sum_{n=1}^{\infty}\frac{2}{n\pi}\sin(n\pi x)e^{-n^{2
 
 \end_layout
 
+\begin_layout Standard
+The derivatives are:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{\partial u(x,t)}{\partial t}=\frac{\partial v(x,t)}{\partial t}=\frac{\partial^{2}u(x,t)}{\partial x^{2}}=\frac{\partial^{2}v(x,t)}{\partial x^{2}}=\sum_{n=1}^{\infty}-2n\pi\sin(n\pi x)e^{-n^{2}\pi^{2}t}.
+\]
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Subsection
 Algorithms
 \end_layout
