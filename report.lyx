@@ -747,9 +747,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Tabular
-<lyxtabular version="3" rows="4" columns="4">
+<lyxtabular version="3" rows="4" columns="3">
 <features tabularvalignment="middle">
-<column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
 <column alignment="center" valignment="top" width="0">
@@ -768,15 +767,6 @@ Scheme
 
 \begin_layout Plain Layout
 Truncation error
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-Actual error in this project
 \end_layout
 
 \end_inset
@@ -812,15 +802,6 @@ Explicit
 \begin_inset Formula $\mathcal{O}(\Delta t)$
 \end_inset
 
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -866,15 +847,6 @@ Implicit
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -911,15 +883,6 @@ Crank-Nicholson
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
@@ -941,7 +904,7 @@ always stable
 \begin_inset Caption
 
 \begin_layout Plain Layout
-Analysis of our schemes.
+Error scaling and stability of our schemes.
 \end_layout
 
 \end_inset
@@ -955,20 +918,9 @@ Analysis of our schemes.
 \end_layout
 
 \begin_layout Standard
-s
-\end_layout
-
-\begin_layout Standard
-If time: Do the Taylor expand for explicit scheme and find the actual error,
- not the order: p.
- 346-347 in the slides.
- (Can use just the result in the C-N case.)
-\end_layout
-
-\begin_layout Standard
-For explanations of the stability criteria, we again refer to the lecture
- notes (p.
+For explanations of these results, we again refer to the lecture notes (p.
  307-309, 312).
+ We will investigate our actual error scaling and test the stability criteria.
 \end_layout
 
 \begin_layout Section
@@ -1004,15 +956,55 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-What we learned.
+What we learned:
+\end_layout
+
+\begin_layout Itemize
+Fourier series solutions of PDEs is a handy thing to remember, so we can
+ compare to a closed form solution.
+\end_layout
+
+\begin_layout Itemize
+In the implicit and Crank-Nicholson schemes, we do not need to show that
+ the inverse matrixes are tridiagonal.
+ It just so happens that they are (though it seems non-trivial to prove),
+ but our algoritm can work around that.
 \end_layout
 
 \begin_layout Subsection
 Critique
 \end_layout
 
-\begin_layout Standard
-x
+\begin_layout Itemize
+It would be helpful if the exercise text used 
+\begin_inset Formula $u(x,t)$
+\end_inset
+
+ throughout and not the confusing 
+\begin_inset Formula $u(x)$
+\end_inset
+
+ formulation that hides the time dependency.
+ This is fine for 
+\begin_inset Formula $u_{s}(x)$
+\end_inset
+
+ which is steady-state, but not for 
+\begin_inset Formula $u$
+\end_inset
+
+ and 
+\begin_inset Formula $v$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+It seems that exercise b) and c) merely asks you to reproduce what is in
+ the lecture notes already.
+ It is fine that we have to understand it, but just copying it seems unnecessary
+, so we skipped it in the report.
 \end_layout
 
 \end_body
