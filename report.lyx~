@@ -114,6 +114,12 @@ the Crank Nicolson Scheme.
 We chose to look at this problem as a one dimension problem, assuming that
  the concentration of neurotransmitters only varies in the direction across
  the synaptic cleft.
+ Thus, the diffusion equation will be for the whole project a one dimension
+ one.
+ In the first part of this report, we will see how to apply these algorithms
+ to our system.
+ Then, we will compare the three of them, and try t determine which one
+ is the most appropriate given this system.
 \end_layout
 
 \begin_layout Section
@@ -1076,7 +1082,19 @@ Implicit scheme
 \end_layout
 
 \begin_layout Standard
-x
+To implement this method, and the Crank Nicolson one, we chose to re-use
+ the tridiagonal solver we implemented during the first lab.
+ Event though the first step was to make some corrections, since we decided
+ to write it for our specific case last time, it was still quite interesting
+ to see that re-using an 
+\begin_inset Quotes eld
+\end_inset
+
+old
+\begin_inset Quotes erd
+\end_inset
+
+ piece of code was possible.
 \end_layout
 
 \begin_layout Subsection
@@ -1105,7 +1123,7 @@ With the Crank Nicolson scheme, the conditions on the
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1146,7 +1164,7 @@ Plot for
 placement H
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \noindent
@@ -1180,6 +1198,20 @@ Plot for
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+Finally, we can see that even though the Explicit scheme is easy to implement,
+ the restriction given by its stability domain cannot make it the best scheme
+ for our diffusion equation.
+ The Crank Nicolson scheme is really interesting because we do not have
+ this restriction anymore.
+ But the number of steps to be computed increases, so we have to find a
+ good balance between a fast, and a general algorithm.
+ But it is important to underline the fact that our system can be seen as
+ a tridiagonal one.
+ Thus, solving this problem, with our old tridiagonal algorithm, is rather
+ efficient, since our code is written for tridiagonal matrices.
 \end_layout
 
 \begin_layout Section
