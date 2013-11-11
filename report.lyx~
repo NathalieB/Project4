@@ -956,7 +956,19 @@ Conclusion
 \end_layout
 
 \begin_layout Standard
-What we think is important.
+What we learned:
+\end_layout
+
+\begin_layout Itemize
+Fourier series solutions of PDEs is a handy thing to remember, so we can
+ compare to a closed form solution.
+\end_layout
+
+\begin_layout Itemize
+In the implicit and Crank-Nicholson schemes, we do not need to show that
+ the inverse matrixes are tridiagonal.
+ It just so happens that they are (though it seems non-trivial to prove),
+ but our algoritm can work around that.
 \end_layout
 
 \begin_layout Subsection

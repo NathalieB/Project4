@@ -26,11 +26,11 @@ bool Solver::forwardSubstitutionVector(vec &v_a, vec &v_d, vec &v_f)
 	// And then, we compute the forward substitution:
 	for (int i= 1; i< sizeVector; i++)
 	{
-		coef = 1/v_d[i-1];
-		v_a[i] += coef*v_d[i-1];  // This operation just allows us to check if  every term of the first diago is null after the substitution
-		v_d[i] -= coef;
-		v_f[i] += coef*v_f[i-1];
-		//printf("a%d : %f \t b%d : %f \t c%d : %f \n",i, v_a[i],i, v_b[i],i, v_c[i]); // debug
+		coef = v_a[i] / v_d[i - 1];
+		v_d[i] -= coef * v_a[i];
+		v_a[i] -= coef*v_d[i-1];  // This operation just allows us to check if  every term of the first diago is null after the substitution
+		v_f[i] -= coef*v_f[i-1];
+		printf("a%d : %f \t b%d : %f \n",i, v_a[i],i, v_d[i]); // debug
 	}
 
 	//for (int i=0; i< sizeVector; i++) // debug
@@ -47,16 +47,13 @@ bool Solver::backwardSubstitutionVector(vec &v_f, vec &v_b, vec v_c, vec &v_Solu
 
 	// We save the last term:
 	v_Solution[sizeVector-1] = v_f[sizeVector-1]/v_b[sizeVector-1];
-	//printf(" u%d : %f \t", sizeVector-1, v_Solution[sizeVector-1]);
 	// and then we compute what's left
-	double x = v_Solution[sizeVector-1];
 	for (int i = sizeVector-1; i > 0; i--)
 	{
-		v_Solution[i-1] = (v_f[i-1] + v_Solution[i]) / v_b[i-1]; // ~2n flops
-		x = v_Solution[i-1];
+		v_Solution[i-1] = (v_f[i-1] - v_c[i-1]*v_Solution[i]) / v_b[i-1];
 		//printf(" u%d : %f | ", i-1, v_Solution[i-1]); // Not displaying it... Pretty clear for little number of Row, but not in other cases
 	}
-	printf("\n"); 
+	//printf("\n"); 
 	return true;
 }
 
@@ -70,11 +67,7 @@ void Solver::tridiagonalSolver(double a,double b,vec& v,vec& vNext)
 	vec v_d(sizeVector);
 	// Initialization of our 2nd vector
 	for (int i = 0; i < sizeVector; i++)
-	{
-		v_a[i] = b;
-		v_c[i] = b;
-	}
-		
+		v_a[i] = v_c[i] = b;
 
 	for (int i = 0; i< sizeVector; i++)
 		v_d[i] = a;

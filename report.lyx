@@ -544,7 +544,7 @@ output: u
 \end_layout
 
 \begin_layout Subsubsection
-Crank-Nicholson scheme
+Crank-Nicolson scheme
 \end_layout
 
 \begin_layout Standard
@@ -696,7 +696,7 @@ The methods to reformulate the problem into a tridiagonal matrix equation
 \end_layout
 
 \begin_layout Standard
-In the case of the Crank-Nicholson sceme, it is easily seen (by the definition
+In the case of the Crank-Nicolson sceme, it is easily seen (by the definition
  of matrix addition and multiplication of a matrix with a scalar) that the
  sum of a diagonal matrix and a tridiagonal matrix 
 \begin_inset Formula $(2\mathbf{I}+\alpha\mathbf{B})$
@@ -722,7 +722,7 @@ w_{i}=2(1-\alpha)v_{i}+\alpha(v_{i-1}+v_{i+1})
 \end_layout
 
 \begin_layout Standard
-hence there is no reason to calculate the inverse matrix 
+Hence there is no reason to calculate the inverse matrix 
 \begin_inset Formula $(2\mathbf{I}-\alpha\mathbf{B})^{-1}$
 \end_inset
 
@@ -862,7 +862,7 @@ always stable
 \begin_inset Text
 
 \begin_layout Plain Layout
-Crank-Nicholson
+Crank-Nicolson
 \end_layout
 
 \end_inset
@@ -965,10 +965,10 @@ Fourier series solutions of PDEs is a handy thing to remember, so we can
 \end_layout
 
 \begin_layout Itemize
-In the implicit and Crank-Nicholson schemes, we do not need to show that
- the inverse matrixes are tridiagonal.
+In the implicit and Crank-Nicolson schemes, we do not need to show that
+ the inverse matrices are tridiagonal.
  It just so happens that they are (though it seems non-trivial to prove),
- but our algoritm can work around that.
+ but our algorithm can work around that.
 \end_layout
 
 \begin_layout Subsection

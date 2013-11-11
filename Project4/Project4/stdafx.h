@@ -8,7 +8,7 @@
 #include "targetver.h"
 #include"Scheme.h"
 #include"Solver.h"
-
+#include "Plot.h"
 
 #include <stdio.h>
 #include <tchar.h>
