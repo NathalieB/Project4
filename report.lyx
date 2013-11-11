@@ -85,7 +85,41 @@ Introduction
 \end_layout
 
 \begin_layout Standard
-x
+How can biological processes such as the transport of signals between neurons
+ be modelized on a computer? And what are the important criteria to look
+ at, when writing such an algorithm ? These are the main questions that
+ we used to lead our 4th project.
+ 
+\end_layout
+
+\begin_layout Standard
+So the point here was to modelized the diffusion of neurotransmitters across
+ the synaptic cleft.
+ To do so, we implemented three methods, based on Taylor's expansion.: 
+\end_layout
+
+\begin_layout Itemize
+the Explicit Scheme, also called forward Euler Scheme
+\end_layout
+
+\begin_layout Itemize
+the Implicit Scheme, or backward Euler Scheme
+\end_layout
+
+\begin_layout Itemize
+the Crank Nicolson Scheme.
+\end_layout
+
+\begin_layout Standard
+We chose to look at this problem as a one dimension problem, assuming that
+ the concentration of neurotransmitters only varies in the direction across
+ the synaptic cleft.
+ Thus, the diffusion equation will be for the whole project a one dimension
+ one.
+ In the first part of this report, we will see how to apply these algorithms
+ to our system.
+ Then, we will compare the three of them, and try t determine which one
+ is the most appropriate given this system.
 \end_layout
 
 \begin_layout Section
@@ -696,7 +730,7 @@ The methods to reformulate the problem into a tridiagonal matrix equation
 \end_layout
 
 \begin_layout Standard
-In the case of the Crank-Nicolson sceme, it is easily seen (by the definition
+In the case of the Crank-Nicolson scheme, it is easily seen (by the definition
  of matrix addition and multiplication of a matrix with a scalar) that the
  sum of a diagonal matrix and a tridiagonal matrix 
 \begin_inset Formula $(2\mathbf{I}+\alpha\mathbf{B})$
@@ -746,6 +780,8 @@ sideways false
 status open
 
 \begin_layout Plain Layout
+\noindent
+\align center
 \begin_inset Tabular
 <lyxtabular version="3" rows="4" columns="3">
 <features tabularvalignment="middle">
@@ -813,6 +849,10 @@ Explicit
 \begin_layout Plain Layout
 stable for 
 \begin_inset Formula $\alpha\leq0.5$
+\end_inset
+
+, with 
+\begin_inset Formula $\alpha=\frac{\triangle t}{\triangle x^{^{2}}}$
 \end_inset
 
 
@@ -932,7 +972,109 @@ Explicit scheme
 \end_layout
 
 \begin_layout Standard
-x
+As discussed previously, the stability criteria for the explicit scheme
+ is kind of a problem for the explicit scheme.
+ Even though the algorithm is not so hard to write, we really have to pay
+ attention to the quantity 
+\begin_inset Formula $\frac{\triangle t}{\triangle x^{^{2}}}$
+\end_inset
+
+, since this is not stable for all 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+.
+ As soon as we try to compute things with 
+\begin_inset Formula $\frac{\triangle t}{\triangle x^{^{2}}}>0.5$
+\end_inset
+
+, things get messy, and at ssome point, irrelevant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Project4/Screen Report/alpha0_4_Explicit.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot for 
+\begin_inset Formula $\frac{\triangle t}{\triangle x^{2}}=0.4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Project4/Screen Report/alpha0_6_Explicit.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot for 
+\begin_inset Formula $\frac{\triangle t}{\triangle x^{2}}=0.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -944,11 +1086,106 @@ x
 \end_layout
 
 \begin_layout Subsection
-Cranck-Nicholson scheme
+Crank-Nicolson scheme
 \end_layout
 
 \begin_layout Standard
-x
+With the Crank Nicolson scheme, the conditions on the 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ used for the stability of the explicit scheme is no longer relevant: this
+ algorithm is stable for every 
+\begin_inset Formula $x$
+\end_inset
+
+ and 
+\begin_inset Formula $t$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Project4/Screen Report/alpha0_4_CR.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot for 
+\begin_inset Formula $\frac{\triangle t}{\triangle x^{2}}=0.4$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+placement H
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\noindent
+\align center
+\begin_inset Graphics
+	filename Project4/Screen Report/alpha0_6_CR.png
+	lyxscale 60
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption
+
+\begin_layout Plain Layout
+Plot for 
+\begin_inset Formula $\frac{\triangle t}{\triangle x^{2}}=0.6$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section

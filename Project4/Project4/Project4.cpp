@@ -13,7 +13,7 @@ int _tmain(int argc, _TCHAR* argv[])
 {
 	int iNbSteps = 5;
 	int truc = pow(iNbSteps + 1, 2);
-	int iTimeSteps = (float)truc/0.6;
+	int iTimeSteps = (float)truc/0.4;
 	bool bWantToQuit = false;
 
 	while(!bWantToQuit)

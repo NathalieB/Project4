@@ -214,5 +214,11 @@ mat Scheme::crankNicolsonScheme(int nSteps, double tSteps, double(*u_s)(double))
 		}
 	}
 
+	for (int i = 0; i < printIndex; i++)
+	{
+		for (int j = 0; j < nSteps; j++)
+			printf("%f \t", M(i, j));
+	}
+
 	return M;
 }
