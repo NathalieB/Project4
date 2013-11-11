@@ -11,23 +11,20 @@ void WriteToFile(mat M, string path);
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	int iNbSteps = 10;
+	int iNbSteps = 5;
 	int truc = pow(iNbSteps + 1, 2);
-	int iTimeSteps = (float)truc/0.4;
+	int iTimeSteps = (float)truc/0.6;
 	bool bWantToQuit = false;
 
 	while(!bWantToQuit)
 	{
-		//cout << "Enter the number of steps you want \t";
-		//cin >> iNbSteps;
-		//fflush(stdin);
 		printf("The configuration is the following : \n \t time steps : %d \t spatial steps: %d \n", iTimeSteps,iNbSteps);
 		int nScheme = 0;
 		Scheme scheme = Scheme();
-		cout << "To choose your algo, press 1 for the Explicit Scheme \n 2 for the Implicit Scheme \n and 3 for the Crank nicolson Scheme \n";
+		cout << "To choose your algo, press 1 for the Explicit Scheme \n 2 for the Implicit Scheme \n and 3 for the Crank Nicolson Scheme \n";
 		cout << "Any other key will quit \n";
 		cin >> nScheme;
-		switch (nScheme)
+		switch(nScheme)
 		{
 		case 1:
 			WriteToFile(scheme.explicitScheme(iNbSteps, iTimeSteps, u),"test.txt");
@@ -36,7 +33,7 @@ int _tmain(int argc, _TCHAR* argv[])
 			WriteToFile(scheme.implicitScheme(iNbSteps, iTimeSteps, u), "test2.txt");
 			break;
 		case 3:
-			scheme.crankNicolsonScheme(iNbSteps, iTimeSteps, u);
+			WriteToFile(scheme.crankNicolsonScheme(iNbSteps, iTimeSteps, u),"testCN.txt");
 			break;
 		default:
 			printf("You shall not be there  !! \n");

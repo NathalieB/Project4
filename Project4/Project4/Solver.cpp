@@ -28,9 +28,10 @@ bool Solver::forwardSubstitutionVector(vec &v_a, vec &v_d, vec &v_f)
 	{
 		coef = v_a[i] / v_d[i - 1];
 		v_d[i] -= coef * v_a[i];
-		v_a[i] -= coef*v_d[i-1];  // This operation just allows us to check if  every term of the first diago is null after the substitution
-		v_f[i] -= coef*v_f[i-1];
-		printf("a%d : %f \t b%d : %f \n",i, v_a[i],i, v_d[i]); // debug
+		v_a[i] -= coef * v_d[i-1];  // This operation just allows us to check if  every term of the first diago is null after the substitution
+		v_f[i] -= coef * v_f[i-1];
+		//printf("a%d : %f \t b%d : %f \n",i, v_a[i],i, v_d[i]); // debug
+		//printf("vNext%d : %f \n",i, v_f[i]);
 	}
 
 	//for (int i=0; i< sizeVector; i++) // debug
@@ -41,16 +42,16 @@ bool Solver::forwardSubstitutionVector(vec &v_a, vec &v_d, vec &v_f)
 
 // Perform backward substitution
 // Note the &'s needed to make Armadillo objects be passed by reference!
-bool Solver::backwardSubstitutionVector(vec &v_f, vec &v_b, vec v_c, vec &v_Solution)
+bool Solver::backwardSubstitutionVector(vec &v_f, vec &v_d, vec v_c, vec &v_Solution)
 {
 	int sizeVector = v_f.n_rows;
 
 	// We save the last term:
-	v_Solution[sizeVector-1] = v_f[sizeVector-1]/v_b[sizeVector-1];
+	v_Solution[sizeVector-1] = v_f[sizeVector-1]/v_d[sizeVector-1];
 	// and then we compute what's left
 	for (int i = sizeVector-1; i > 0; i--)
 	{
-		v_Solution[i-1] = (v_f[i-1] - v_c[i-1]*v_Solution[i]) / v_b[i-1];
+		v_Solution[i-1] = (v_f[i-1] - v_c[i-1]*v_Solution[i]) / v_d[i-1];
 		//printf(" u%d : %f | ", i-1, v_Solution[i-1]); // Not displaying it... Pretty clear for little number of Row, but not in other cases
 	}
 	//printf("\n"); 
@@ -60,21 +61,26 @@ bool Solver::backwardSubstitutionVector(vec &v_f, vec &v_b, vec v_c, vec &v_Solu
 // a: diag. elem | b: non diag. elem
 void Solver::tridiagonalSolver(double a,double b,vec& v,vec& vNext)
 {
-
 	int sizeVector = v.n_rows;
-	// First, we need to duplicate v_a, since we have to "nearly diagonals"
+	// First, we need to duplicate v_a, since we have two "nearly diagonals"
 	vec v_a(sizeVector), v_c(sizeVector);
 	vec v_d(sizeVector);
-	// Initialization of our 2nd vector
+	// Initialization of our non-diagonal vector
 	for (int i = 0; i < sizeVector; i++)
 		v_a[i] = v_c[i] = b;
-
+	// Initialization of our diagonal vector
 	for (int i = 0; i< sizeVector; i++)
 		v_d[i] = a;
 
 	// Calling Forward then Backward 
-	forwardSubstitutionVector(v_a, v_d,vNext);
-	backwardSubstitutionVector(vNext, v_d, v_c, v);
+	forwardSubstitutionVector(v_a, v_d,v);
+	/*printf("After Forward: \n");
+	for (int i = 0; i < sizeVector;i++)
+		printf("%f \t", v[i]); // Debug */
+	backwardSubstitutionVector(v, v_d, v_c, vNext);
+	/*printf("After Backward: \n");
+	for (int i = 0; i < sizeVector; i++)
+		printf("%f \t", vNext[i]);*/
 	
 	return;
 }

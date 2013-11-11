@@ -114,7 +114,7 @@ mat Scheme::implicitScheme(int nSteps, double tSteps, double(*u_s)(double))
 	for( int i = 0; i < nSteps; i++)
 	{
 		double x = (i + 1) * deltaX;
-		v[i] = -u_s(x);
+		vNext[i] = v[i] = -u_s(x);
 	}
 	// Boundary conditions
 	v[0] = vNext[0] = v[nSteps] = vNext[nSteps] = 0;
@@ -125,23 +125,11 @@ mat Scheme::implicitScheme(int nSteps, double tSteps, double(*u_s)(double))
 	Solver solv = Solver();
 	for(int t = 1; t <= tSteps; t++)
 	{
-		/*if ((t-1) % 200 == 0)
-		{
-			for (int i = 0; i < nSteps;i++)
-				printf("%f \t", v(i));
-			printf("\n");
-		}*/
 		solv.tridiagonalSolver(a, b, v, vNext);
-		v = vNext; 
-		/*if ((t - 1) % 200 == 0)
-		{
-			for (int i = 0; i < nSteps; i++)
-				printf("%f \t", v(i));
-			printf("\n");
-		}*/
-
+		
 		// Initial conditions
-		v[0] = v[nSteps] = 0;
+		vNext[0] = vNext[nSteps] = 0;
+		v = vNext;
 
 		for (int i = 0; i < nSteps; i++)
 		{
@@ -157,7 +145,6 @@ mat Scheme::implicitScheme(int nSteps, double tSteps, double(*u_s)(double))
 			index++;
 		}
 	}
-
 
 	for (int i = 0; i < printIndex; i++)
 	{
@@ -177,6 +164,10 @@ mat Scheme::crankNicolsonScheme(int nSteps, double tSteps, double(*u_s)(double))
 	double alpha = deltaT / pow(deltaX,2);
 
 	vec v(nSteps), w(nSteps), u(nSteps);
+
+	int printIndex = tSteps / 10;
+	mat M(printIndex, nSteps);
+	int index = 0;
 
 	for(int i = 0; i < nSteps; i++)
 	{
@@ -203,16 +194,25 @@ mat Scheme::crankNicolsonScheme(int nSteps, double tSteps, double(*u_s)(double))
 				w[i] += alpha * v[i + 1]; // else += 0
 		}	
 		solv.tridiagonalSolver(a, b, w, v);
+
+		
+		// Boundary conditions:
+		v[0] = v[nSteps] = 0;
+
+		for (int i = 0; i < nSteps; i++)
+		{
+			double x = (i + 1) * deltaX;
+			u[i] = v[i] + u_s(x);
+		}
+
+		// Print to file !
+		if (t % 10 == 0)
+		{
+			for (int i = 0; i < nSteps; i++)
+				M(index, i) = u[i];
+			index++;
+		}
 	}
 
-	// Boundary conditions:
-	v[0] = v[nSteps] = 0;
-
-	for(int i = 0; i < nSteps; i++)
-	{
-		double x = (i + 1) * deltaX;
-		u[i] = v[i] + u_s(x);
-	}
-
-	return u;
+	return M;
 }
